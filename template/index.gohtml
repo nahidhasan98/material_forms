@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>{{ .Title }}</title>
 
     <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
     <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
@@ -68,7 +68,7 @@
     <div id="scrollbar" class="mdc-drawer-scrim"></div>
     {{ end }}
 
-    {{ block "container" .}}
+    {{ block "container" . }}
     <main class="mdc-top-app-bar--fixed-adjust">
         <div class="loginCard">
             <div class="mdc-card" style="text-align: center;">
@@ -78,7 +78,15 @@
     </main>
     {{ end }}
 
+    <!-- ... default scripts ... -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="resources/scripts/main.js"></script>
+
+    <!-- ... custom scripts ... -->
+    {{ block "scripts" . }}
+
+    {{ end }}
 </body>
 
 </html>

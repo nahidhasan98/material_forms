@@ -14,7 +14,7 @@
         <section class="loginHeader">
             <h1 class="mdc-typography--headline6 loginTitle">Login to your account</h1>
         </section>
-        <form action="" method="post">
+        <form action="" method="POST">
             <!-- ... username ... -->
             <label class="mdc-text-field mdc-text-field--filled mdc-text-field-username">
                 <span class="mdc-text-field__ripple"></span>
@@ -45,6 +45,8 @@
         </form>
     </div>
 </main>
+{{ end }}
 
-<script src="resources/scripts/login.js"></script>
+{{ block "scripts" . }}
+    <script src="resources/scripts/login.js"></script>
 {{ end }}

@@ -1,7 +1,6 @@
 {{ block "topbarRight" .}}
 <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
-    <button class="mdc-button mdc-button--outlined" onclick="window.location.href='/login';"
-        style="background-color: white;">
+    <button class="mdc-button mdc-button--outlined" onclick="window.location.href='/login';" style="background-color: white;">
         <span class="mdc-button__ripple"></span>
         <span class="mdc-button__label">Login</span>
     </button>
@@ -14,34 +13,33 @@
         <section class="loginHeader">
             <h1 class="mdc-typography--headline6 loginTitle">Create an account</h1>
         </section>
-        <form action="" method="post">
+        <form id="regForm" action="" method="POST">
             <!-- ... username ... -->
             <label class="mdc-text-field mdc-text-field--filled mdc-text-field-username">
                 <span class="mdc-text-field__ripple"></span>
                 <span class="mdc-floating-label" id="my-label-id-username">Username</span>
-                <input class="mdc-text-field__input" type="text" aria-labelledby="my-label-id-username" required>
+                <input id="username" name="username" class="mdc-text-field__input" type="text" aria-labelledby="my-label-id-username" required>
                 <span class="mdc-line-ripple"></span>
             </label>
             <!-- ... email ... -->
             <label class="mdc-text-field mdc-text-field--filled mdc-text-field-email">
                 <span class="mdc-text-field__ripple"></span>
                 <span class="mdc-floating-label" id="my-label-id-email">Email</span>
-                <input class="mdc-text-field__input" type="text" aria-labelledby="my-label-id-email" required>
+                <input id="email" name="email" class="mdc-text-field__input" type="email" aria-labelledby="my-label-id-email" required>
                 <span class="mdc-line-ripple"></span>
             </label>
             <!-- ... password ... -->
             <label class="mdc-text-field mdc-text-field--filled mdc-text-field-password">
                 <span class="mdc-text-field__ripple"></span>
                 <span class="mdc-floating-label" id="my-label-id-password">Password</span>
-                <input class="mdc-text-field__input" type="password" aria-labelledby="my-label-id-password" required>
+                <input id="password" name="password" class="mdc-text-field__input" type="password" aria-labelledby="my-label-id-password" required>
                 <span class="mdc-line-ripple"></span>
             </label>
             <!-- ... password ... -->
             <label class="mdc-text-field mdc-text-field--filled mdc-text-field-confirm-password">
                 <span class="mdc-text-field__ripple"></span>
                 <span class="mdc-floating-label" id="my-label-id-confirm-password">Confirm Password</span>
-                <input class="mdc-text-field__input" type="password" aria-labelledby="my-label-id-confirm-password"
-                    required>
+                <input id="confirmPassword" name="confirmPassword" class="mdc-text-field__input" type="password" aria-labelledby="my-label-id-confirm-password"required>
                 <span class="mdc-line-ripple"></span>
             </label>
             <!-- ... button ... -->
@@ -54,6 +52,8 @@
         </form>
     </div>
 </main>
+{{ end }}
 
-<script src="resources/scripts/register.js"></script>
+{{ block "scripts" . }}
+    <script src="resources/scripts/register.js"></script>
 {{ end }}
