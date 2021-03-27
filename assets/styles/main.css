@@ -1,0 +1,35 @@
+body {
+    font-family: "Roboto",sans-serif;
+}
+
+.top-menu-gap {
+    margin-bottom: -50px;
+}
+
+.loginCard {
+    margin: 0 auto;
+    width: 380px;
+    height: 400px;
+    top: 50px;
+    padding: 30px 40px;
+    background: white;
+}
+
+.loginTitle {
+    line-height: 0;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 40px;
+    text-align: left;
+    color: #031b4e;
+}
+.mdc-text-field-username, .mdc-text-field-password, .mdc-text-field-email, .mdc-text-field-confirm-password, .loginHeader p {
+    margin: 10px auto;
+    width: 100%;
+}
+
+.login-button-container{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}

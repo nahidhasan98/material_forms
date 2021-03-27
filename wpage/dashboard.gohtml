@@ -1,0 +1,33 @@
+{{ block "topbarRight" .}}
+<section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
+    <button id="dashboard" class="mdc-icon-button material-icons mdc-top-app-bar__action-item--unbounded"
+        aria-label="Profile"><span class="material-icons">perm_identity</span></button>
+
+    <div class="mdc-menu-surface--anchor top-menu-gap">
+        <div class="mdc-menu mdc-menu-surface">
+            <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical" tabindex="-1">
+                <li class="mdc-list-item" role="menuitem">
+                    <span class="mdc-list-item__ripple"></span>
+                    <span class="material-icons mdc-list-item__graphic">fingerprint</span>
+                    <span class="mdc-list-item__text">Change Password</span>
+                </li>
+                <li class="mdc-list-item" role="menuitem">
+                    <span class="mdc-list-item__ripple"></span>
+                    <span class="material-icons mdc-list-item__graphic">logout</span>
+                    <span class="mdc-list-item__text">Logout</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+{{ end }}
+
+{{ block "container" .}}
+<main class="mdc-top-app-bar--fixed-adjust">
+    <div class="loginCard">
+        <div class="mdc-card">
+            <h1 class="mdc-typography--headline6">This is Dashboard</h1>
+        </div>
+    </div>
+</main>
+{{ end }}
