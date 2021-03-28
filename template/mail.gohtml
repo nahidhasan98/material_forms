@@ -61,10 +61,10 @@
                 </a>
             </div>
             <div style="padding:10px;">
-                <p>Hi <span style="color:#6200EE; font-size:16px;">nahidhsan98<span>,</p>
+                <p>Hi <span style="color:#6200EE; font-size:16px;">{{ .Username }}<span>,</p>
                 <p style="margin-bottom:20px;">Thank you for registration to Master-Academy. Please click the link below
                     to verify your email address.</p>
-                <a id="verify" href="#">Verify Email</a>
+                <a id="verify" href="{{ .Link }}">Verify Email</a>
                 <p style="margin-top:20px;">This account verification link is valid for next 30 minutes. After link
                     expiration, the above link will help you to get a new link.</p>
             </div>
