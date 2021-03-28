@@ -3,15 +3,15 @@ package main
 import (
 	"fmt"
 	"html/template"
-	"material_forms/model"
 	"net/http"
 	"os"
-	"time"
 
+	"github.com/gorilla/sessions"
 	"github.com/mateors/mcb"
 )
 
 var db *mcb.DB
+var store = sessions.NewCookieStore([]byte("mysession"))
 
 func init() {
 	//couchbase connection block
@@ -21,7 +21,6 @@ func init() {
 		fmt.Println(res)
 		os.Exit(1)
 	}
-	fmt.Println(res, err)
 }
 
 func checkErr(err error) {
@@ -37,6 +36,7 @@ func main() {
 	http.HandleFunc("/", home)
 	http.HandleFunc("/register", register)
 	http.HandleFunc("/login", login)
+	http.HandleFunc("/logout", logout)
 	http.HandleFunc("/forgot_password", forgotpassword)
 	http.HandleFunc("/dashboard", dashboard)
 
@@ -51,112 +51,26 @@ func main() {
 }
 
 func home(w http.ResponseWriter, r *http.Request) {
-	tmpl, err := template.ParseFiles("template/index.gohtml")
+	session, err := store.Get(r, "mysession")
 	checkErr(err)
 
 	//preparing data for sending frontend
+	if session.Values["isLoggedIn"] == nil {
+		session.Values["isLoggedIn"] = false
+		session.Values["username"] = ""
+	}
 	data := struct {
-		Title string
+		Title      string
+		IsLoggedIn bool
+		Username   string
 	}{
-		Title: "Material Forms | MASTER-ACADEMY",
+		Title:      "Material Forms | MASTER-ACADEMY",
+		IsLoggedIn: session.Values["isLoggedIn"].(bool),
+		Username:   session.Values["username"].(string),
 	}
 
-	tmpl.Execute(w, data)
-}
-
-func register(w http.ResponseWriter, r *http.Request) {
-	if r.Method != "POST" {
-		tmpl, err := template.ParseFiles("template/index.gohtml")
-		checkErr(err)
-
-		tmpl, err = tmpl.ParseFiles("wpage/register.gohtml")
-		checkErr(err)
-
-		//preparing data for sending frontend
-		data := struct {
-			Title string
-		}{
-			Title: "Register | MASTER-ACADEMY",
-		}
-
-		tmpl.Execute(w, data)
-	} else {
-		uTable := model.UserTable{
-			FirstName:            "",
-			LastName:             "",
-			DateOfBirth:          0,
-			Phone:                "",
-			CreatedAt:            time.Now().Unix(),
-			IsVerified:           false,
-			AccVerifyToken:       model.GenerateToken(),
-			AccVerifyTokenSentAt: time.Now().Unix(),
-			PassResetToken:       "",
-			PassResetTokenSentAt: 0,
-			Type:                 "user",
-			Status:               1,
-		}
-
-		r.ParseForm()
-		r.Form.Add("bucket", "master_academy")
-		r.Form.Add("aid", "request::1") //we will update later
-		insertResponse := db.Insert(r.Form, &uTable)
-
-		if insertResponse.Status == "success" {
-			fmt.Fprintln(w, "Registration Done")
-		} else {
-			fmt.Fprintln(w, "Registration Error")
-		}
-	}
-}
-
-func login(w http.ResponseWriter, r *http.Request) {
 	tmpl, err := template.ParseFiles("template/index.gohtml")
 	checkErr(err)
-
-	tmpl, err = tmpl.ParseFiles("wpage/login.gohtml")
-	checkErr(err)
-
-	//preparing data for sending frontend
-	data := struct {
-		Title string
-	}{
-		Title: "Login | MASTER-ACADEMY",
-	}
-
-	tmpl.Execute(w, data)
-}
-
-func forgotpassword(w http.ResponseWriter, r *http.Request) {
-	tmpl, err := template.ParseFiles("template/index.gohtml")
-	checkErr(err)
-
-	tmpl, err = tmpl.ParseFiles("wpage/forgot_password.gohtml")
-	checkErr(err)
-
-	//preparing data for sending frontend
-	data := struct {
-		Title string
-	}{
-		Title: "Request for password reset | MASTER-ACADEMY",
-	}
-
-	tmpl.Execute(w, data)
-}
-
-func dashboard(w http.ResponseWriter, r *http.Request) {
-	tmpl, err := template.ParseFiles("template/index.gohtml")
-	checkErr(err)
-
-	tmpl, err = tmpl.ParseFiles("wpage/dashboard.gohtml")
-	checkErr(err)
-
-	//preparing data for sending frontend
-	data := struct {
-		Title string
-	}{
-		Title: "Dashboard | MASTER-ACADEMY",
-	}
-
 	tmpl.Execute(w, data)
 }
 

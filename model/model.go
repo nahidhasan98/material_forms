@@ -10,7 +10,7 @@ type UserTable struct {
 	DateOfBirth          int64  `json:"dateOfBirth"`
 	Phone                string `json:"phone"`
 	CreatedAt            int64  `json:"createdAt"`
-	IsVerified           bool   `json:"isVerified"`
+	IsVerified           int    `json:"isVerified"`
 	AccVerifyToken       string `json:"accVerifyToken"`
 	AccVerifyTokenSentAt int64  `json:"accVerifyTokenSentAt"`
 	PassResetToken       string `json:"passResetToken"`

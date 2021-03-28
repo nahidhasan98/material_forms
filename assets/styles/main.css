@@ -2,10 +2,6 @@ body {
     font-family: "Roboto",sans-serif;
 }
 
-.top-menu-gap {
-    margin-bottom: -50px;
-}
-
 .loginCard {
     margin: 0 auto;
     width: 380px;

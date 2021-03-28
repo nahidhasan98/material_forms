@@ -4,6 +4,10 @@ github.com/davecgh/go-spew v1.1.0 h1:ZDRjVQ15GmhC3fiQ8ni8+OwkZQO4DARzQgrnXU1Liz8
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/elliotchance/orderedmap v1.4.0 h1:wZtfeEONCbx6in1CZyE6bELEt/vFayMvsxqI5SgsR+A=
 github.com/elliotchance/orderedmap v1.4.0/go.mod h1:wsDwEaX5jEoyhbs7x93zk2H/qv0zwuhg4inXhDkYqys=
+github.com/gorilla/securecookie v1.1.1 h1:miw7JPhV+b/lAHSXz4qd/nN9jRiAFV5FwjeKyCS8BvQ=
+github.com/gorilla/securecookie v1.1.1/go.mod h1:ra0sb63/xPlUeL+yeDciTfxMRAA+MP+HVt/4epWDjd4=
+github.com/gorilla/sessions v1.2.1 h1:DHd3rPN5lE3Ts3D8rKkQ8x/0kqfeNmBAaiSi+o7FsgI=
+github.com/gorilla/sessions v1.2.1/go.mod h1:dk2InVEVJ0sfLlnXv9EAgkf6ecYs/i80K/zI+bUmuGM=
 github.com/mateors/mcb v0.0.0-20201207015423-f79fcbf435d1 h1:zpCf4N5P9JsGzT4jvY3TCzlmf2GCjBaLD6k35meiFyM=
 github.com/mateors/mcb v0.0.0-20201207015423-f79fcbf435d1/go.mod h1:kGE/EYSBPALc3ZDyLFwqcDey3kIlU4/4H1BYjc6IrZs=
 github.com/mateors/money v0.0.0-20200823090156-43894c563246 h1:iQt1CuKUUO3cSs5yJXRBYNIvO/azMXoQh1qfan6KkM4=
